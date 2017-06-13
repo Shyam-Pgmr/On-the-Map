@@ -106,7 +106,14 @@ class HttpClient: NSObject {
             
             // Was there an error?
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                
+                let nsError = (error! as NSError)
+                if nsError.code == NSURLErrorNotConnectedToInternet {
+                    sendError(Constants.ErrorDescription.NoInternetConnection)
+                }
+                else {
+                    sendError("There was an error with your request: \(error!)")
+                }
                 return
             }
             
@@ -117,7 +124,7 @@ class HttpClient: NSObject {
                 var errorMessage = ""
                 
                 if statusCode == Constants.StatusCode.InvalidCredentials {
-                    errorMessage = "Invalid Credentials"
+                    errorMessage = Constants.ErrorDescription.InvalidCredentials
                 }
                 else {
                     errorMessage = "Your request returned a status code \(statusCode!)"
@@ -215,6 +222,12 @@ extension HttpClient {
         struct StatusCode {
             static let InvalidCredentials = 403
         }
+        
+        struct ErrorDescription {
+            static let InvalidCredentials = "Invalid Credentials"
+            static let NoInternetConnection = "Check your Internet Connection"
+        }
+        
     }
 }
 
