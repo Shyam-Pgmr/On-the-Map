@@ -28,7 +28,7 @@ extension HttpClient {
             
             // Send the desired value(s) to completion handler */
             if let error = error {
-                completionHandler(false, error.description)
+                completionHandler(false, error.localizedDescription)
             } else {
                 completionHandler(true, nil)
             }

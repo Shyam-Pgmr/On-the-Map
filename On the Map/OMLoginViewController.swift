@@ -101,7 +101,7 @@ class OMLoginViewController: UIViewController {
                     })
                 }
                 else {
-                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: Constants.Alert.Message.InvalidCredentials, viewController: self, handler: { (action) in
+                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: errorMessage!, viewController: self, handler: { (action) in
                         // Focus Email Field
                         self.emailTextField.becomeFirstResponder()
                     })

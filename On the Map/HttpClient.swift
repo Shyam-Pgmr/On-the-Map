@@ -111,9 +111,19 @@ class HttpClient: NSObject {
             }
             
             // Did we get a successful 2XX response?
+            
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode
-                sendError("Your request returned a status code \(statusCode!)")
+                var errorMessage = ""
+                
+                if statusCode == Constants.StatusCode.InvalidCredentials {
+                    errorMessage = "Invalid Credentials"
+                }
+                else {
+                    errorMessage = "Your request returned a status code \(statusCode!)"
+                }
+                
+                sendError(errorMessage)
                 return
             }
             
@@ -201,7 +211,10 @@ extension HttpClient {
             static let ApiValue = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
             static let ParseApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         }
-        
+     
+        struct StatusCode {
+            static let InvalidCredentials = 403
+        }
     }
 }
 
