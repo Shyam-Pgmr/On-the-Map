@@ -33,6 +33,10 @@ class OMLoginViewController: UIViewController {
     
     // MARK: Helper
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) // To close keyboard when tapped on screen
+    }
+    
     func addBorderToLoginButton() {
         
         loginButton.layer.cornerRadius = 4.0
