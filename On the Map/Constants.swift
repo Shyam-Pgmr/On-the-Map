@@ -27,12 +27,4 @@ struct Constants {
         }
         
     }
-    
-    // MARK: URL
-    struct URL {
-        
-        static let SignupURL = "https://auth.udacity.com/sign-up"
-        
-    }
-    
 }

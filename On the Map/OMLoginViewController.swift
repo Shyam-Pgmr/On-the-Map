@@ -84,7 +84,7 @@ class OMLoginViewController: UIViewController {
     
     func openSignupScreen() {
         
-        if let signupURL = URL(string: Constants.URL.SignupURL) {
+        if let signupURL = URL(string: HttpClient.Constants.URL.SignupURL) {
         
             UIApplication.shared.open(signupURL, options: [:], completionHandler: nil)
         }
