@@ -33,7 +33,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QvK-av-2Bv">
                                 <rect key="frame" x="16" y="162" width="343" height="190"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-e8-Ucu">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-e8-Ucu">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="hiX-Hy-ugs"/>
@@ -54,16 +54,33 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="E7L-r2-GPw"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-6C-5Y8">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWR-vx-jxY">
                                         <rect key="frame" x="0.0" y="100" width="343" height="40"/>
-                                        <color key="backgroundColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="LOG IN">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="loginButtonTapAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gwl-YY-F2O"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QGN-M2-RwA">
+                                                <rect key="frame" x="161" y="10" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-6C-5Y8">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                <color key="backgroundColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="LOG IN">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="loginButtonTapAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gwl-YY-F2O"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="QGN-M2-RwA" firstAttribute="centerY" secondItem="SWR-vx-jxY" secondAttribute="centerY" id="5bJ-am-lvz"/>
+                                            <constraint firstItem="GCb-6C-5Y8" firstAttribute="leading" secondItem="SWR-vx-jxY" secondAttribute="leading" id="EJT-kV-ef4"/>
+                                            <constraint firstItem="GCb-6C-5Y8" firstAttribute="top" secondItem="SWR-vx-jxY" secondAttribute="top" id="I9X-x3-KJK"/>
+                                            <constraint firstAttribute="bottom" secondItem="GCb-6C-5Y8" secondAttribute="bottom" id="Jx8-t8-wsG"/>
+                                            <constraint firstAttribute="trailing" secondItem="GCb-6C-5Y8" secondAttribute="trailing" id="VyY-LP-f4m"/>
+                                            <constraint firstItem="QGN-M2-RwA" firstAttribute="centerX" secondItem="SWR-vx-jxY" secondAttribute="centerX" id="lW3-GH-yBI"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePT-ab-Xb0" userLabel="Sign up">
                                         <rect key="frame" x="0.0" y="150" width="343" height="40"/>
                                         <subviews>

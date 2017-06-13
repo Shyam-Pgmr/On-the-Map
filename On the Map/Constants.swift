@@ -15,11 +15,17 @@ struct Constants {
         
         struct Title {
             static let Validation = "Validation"
+            static let ServerError = "Server Error"
+            static let Oops = "Oops"
+            static let Success = "Success"
+
         }
         
         struct Message {
             static let EmptyEmail = "Email Can't be empty"
             static let EmptyPassword = "Password can't be empty"
+            static let LoginSuccess = "Logged in successfully"
+            static let InvalidCredentials = "Invalid credential"
         }
         
         struct ActionTitle {

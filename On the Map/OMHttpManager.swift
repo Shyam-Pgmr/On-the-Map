@@ -10,7 +10,14 @@ import UIKit
 
 extension HttpClient {
     
-    private func login(username:String, password:String, completionHandlerForToken: @escaping (Bool,String?) -> Void) {
+    
+    /// Login API
+    ///
+    /// - Parameters:
+    ///   - username: Email of user
+    ///   - password: password of user
+    ///   - completionHandler: Handler to be called when task is finished
+    func login(username:String, password:String, completionHandler: @escaping (_ success:Bool, _ errorString:String?) -> Void) {
         
         let parameters = [String:AnyObject]()
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
@@ -21,10 +28,9 @@ extension HttpClient {
             
             // Send the desired value(s) to completion handler */
             if let error = error {
-                print(error)
-                completionHandlerForToken(false, "Login Failed (Request Token).")
+                completionHandler(false, error.description)
             } else {
-                completionHandlerForToken(true, nil)
+                completionHandler(true, nil)
             }
         }
     }

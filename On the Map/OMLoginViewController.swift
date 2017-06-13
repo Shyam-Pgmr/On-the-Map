@@ -60,14 +60,9 @@ class OMLoginViewController: UIViewController {
         guard validationMessage.isEmpty else {
             
             // Show validation Alert
-            let alertController = UIAlertController(title: Constants.Alert.Title.Validation, message: validationMessage, preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: Constants.Alert.ActionTitle.OK, style: .default , handler: { (action) in
+            Utility.Alert.show(title: Constants.Alert.Title.Validation, message: validationMessage, viewController: self, handler: { (action) in
                 textFieldToFocus.becomeFirstResponder()
             })
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true)
             
             return false
         }
@@ -75,10 +70,44 @@ class OMLoginViewController: UIViewController {
         return true
     }
     
+    func startLoading() {
+        view.isUserInteractionEnabled = false
+        loginButton.isHidden = true
+    }
+    
+    func stopLoading() {
+        view.isUserInteractionEnabled = true
+        loginButton.isHidden = false
+    }
+    
     func login() {
         
         guard validate() else {
             return
+        }
+        
+        view.endEditing(true) // Close Keyboard
+        let username = emailTextField.text!
+        let password = passwordTextField.text!
+        
+        startLoading()
+        
+        HttpClient.shared().login(username: username, password: password) { (success, errorMessage) in
+            
+            Utility.runOnMain {
+                if success {
+                    Utility.Alert.show(title: Constants.Alert.Title.Success, message: Constants.Alert.Message.LoginSuccess, viewController: self, handler: { (action) in
+                        
+                    })
+                }
+                else {
+                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: Constants.Alert.Message.InvalidCredentials, viewController: self, handler: { (action) in
+                        // Focus Email Field
+                        self.emailTextField.becomeFirstResponder()
+                    })
+                }
+                self.stopLoading()
+            }
         }
     }
     
@@ -89,7 +118,6 @@ class OMLoginViewController: UIViewController {
             UIApplication.shared.open(signupURL, options: [:], completionHandler: nil)
         }
     }
-    
 }
 
 // MARK: TextField Delegate
