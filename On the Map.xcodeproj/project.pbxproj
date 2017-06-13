@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */; };
+		52064CC01EF00A29004413B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CBF1EF00A29004413B1 /* Constants.swift */; };
 		522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C29911EEE8F49008741FA /* AppDelegate.swift */; };
-		522C29941EEE8F49008741FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C29931EEE8F49008741FA /* ViewController.swift */; };
 		522C29971EEE8F49008741FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C29951EEE8F49008741FA /* Main.storyboard */; };
 		522C29991EEE8F49008741FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522C29981EEE8F49008741FA /* Assets.xcassets */; };
 		522C299C1EEE8F49008741FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C299A1EEE8F49008741FA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMLoginViewController.swift; sourceTree = "<group>"; };
+		52064CBF1EF00A29004413B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		522C298E1EEE8F49008741FA /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		522C29911EEE8F49008741FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		522C29931EEE8F49008741FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		522C29961EEE8F49008741FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		522C29981EEE8F49008741FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		522C299B1EEE8F49008741FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,7 +50,7 @@
 		52064CB91EEFFF66004413B1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				522C29931EEE8F49008741FA /* ViewController.swift */,
+				52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -56,6 +58,7 @@
 		52064CBA1EEFFF71004413B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				52064CBF1EF00A29004413B1 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -122,6 +125,7 @@
 		522C29861EEE8F49008741FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = OM;
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Shyam;
@@ -168,8 +172,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				522C29941EEE8F49008741FA /* ViewController.swift in Sources */,
+				52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */,
 				522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */,
+				52064CC01EF00A29004413B1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
