@@ -85,11 +85,15 @@ class HttpClient: NSObject {
         // Build the URL, Configure the request
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, host: host, path: method))
         request.httpMethod = "POST"
-        request.addValue(HttpClient.Constants.ParameterKeys.ApiKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ApiValue)
-        request.addValue(HttpClient.Constants.ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ParseApplicationID)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
+        
+        // Attact ApiKey and ApplicationID for Parse Host alone
+        if host == Constants.UrlComponents.HostOfParseAPI {
+            request.addValue(Constants.ParameterKeys.ApiKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ApiValue)
+            request.addValue(Constants.ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ParseApplicationID)
+        }
         
         // Make the request
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in

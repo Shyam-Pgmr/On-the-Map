@@ -10,6 +10,7 @@
 		52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */; };
 		52064CC01EF00A29004413B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CBF1EF00A29004413B1 /* Constants.swift */; };
 		52064CC21EF01F8E004413B1 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC11EF01F8E004413B1 /* HttpClient.swift */; };
+		52064CC41EF063DB004413B1 /* OMHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC31EF063DB004413B1 /* OMHttpManager.swift */; };
 		522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C29911EEE8F49008741FA /* AppDelegate.swift */; };
 		522C29971EEE8F49008741FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C29951EEE8F49008741FA /* Main.storyboard */; };
 		522C29991EEE8F49008741FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522C29981EEE8F49008741FA /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMLoginViewController.swift; sourceTree = "<group>"; };
 		52064CBF1EF00A29004413B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		52064CC11EF01F8E004413B1 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		52064CC31EF063DB004413B1 /* OMHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMHttpManager.swift; sourceTree = "<group>"; };
 		522C298E1EEE8F49008741FA /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		522C29911EEE8F49008741FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522C29961EEE8F49008741FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				52064CBF1EF00A29004413B1 /* Constants.swift */,
 				52064CC11EF01F8E004413B1 /* HttpClient.swift */,
+				52064CC31EF063DB004413B1 /* OMHttpManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			files = (
 				52064CC21EF01F8E004413B1 /* HttpClient.swift in Sources */,
 				52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */,
+				52064CC41EF063DB004413B1 /* OMHttpManager.swift in Sources */,
 				522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */,
 				52064CC01EF00A29004413B1 /* Constants.swift in Sources */,
 			);
