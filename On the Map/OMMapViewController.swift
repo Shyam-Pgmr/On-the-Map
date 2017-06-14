@@ -43,7 +43,7 @@ class OMMapViewController: UIViewController {
     
     func setupView() {
         
-        loadingView.alpha = 0
+        startLoading()
     }
     
     func populateMapWithStudentPins() {
@@ -86,6 +86,8 @@ class OMMapViewController: UIViewController {
     }
 }
 
+// MARK: OMTabViewController Delegate
+
 extension OMMapViewController: OMTabViewControllerDelegate {
     
     func refreshView() {
@@ -100,5 +102,43 @@ extension OMMapViewController: OMTabViewControllerDelegate {
         loadingView.alpha = 0
     }
     
+}
+
+// MARK: MapView Delegate
+
+extension OMMapViewController:MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let pointAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PointAnnotationView")
+        pointAnnotationView.canShowCallout = true
+        pointAnnotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        
+        return pointAnnotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if let annotation = view.annotation as? MKPointAnnotation {
+            
+            if let mediaURLString = annotation.subtitle {
+                
+                // Open URL in External Browser
+                if let mediaURL = URL(string: mediaURLString) {
+                    UIApplication.shared.open(mediaURL, options: [:])
+                }
+                else {
+                    // Show Invalid URL Alert
+                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: Constants.Alert.Message.InvalidURL, viewController: self, handler: { (action) in
+                        
+                    })
+                }
+            }
+        }
+    }
 }
 

@@ -29,6 +29,7 @@ struct Constants {
             static let EmptyPassword = "Password can't be empty"
             static let LoginSuccess = "Logged in successfully"
             static let InvalidCredentials = "Invalid credential"
+            static let InvalidURL = "Invalid URL"
         }
         
         struct ActionTitle {
