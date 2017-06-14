@@ -20,6 +20,7 @@
 		522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C29911EEE8F49008741FA /* AppDelegate.swift */; };
 		522C29991EEE8F49008741FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522C29981EEE8F49008741FA /* Assets.xcassets */; };
 		522C299C1EEE8F49008741FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C299A1EEE8F49008741FA /* LaunchScreen.storyboard */; };
+		52EEBF6F1EF154670092FE43 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEBF6E1EF154670092FE43 /* StudentInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		522C29981EEE8F49008741FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		522C299B1EEE8F49008741FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522C299D1EEE8F49008741FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52EEBF6E1EF154670092FE43 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				52064CC11EF01F8E004413B1 /* HttpClient.swift */,
 				52064CC31EF063DB004413B1 /* HttpManager.swift */,
 				52064CC51EF06D44004413B1 /* Utility.swift */,
+				52EEBF6E1EF154670092FE43 /* StudentInformation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				52064CCF1EF14C1D004413B1 /* OMTabViewController.swift in Sources */,
 				52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */,
 				52064CC61EF06D44004413B1 /* Utility.swift in Sources */,
+				52EEBF6F1EF154670092FE43 /* StudentInformation.swift in Sources */,
 				52064CCD1EF14B7C004413B1 /* OMListViewController.swift in Sources */,
 				52064CC41EF063DB004413B1 /* HttpManager.swift in Sources */,
 				522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */,
