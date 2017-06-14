@@ -240,9 +240,6 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="j57-8C-Out">
                                 <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="addBarButtonTapAction:" destination="ZeK-nD-RdW" id="6dc-sh-IDf"/>
-                                </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="u5w-dp-qsq">
                                 <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -16,9 +16,7 @@ class HttpClient: NSObject {
     var session = URLSession.shared
     
     // authentication state
-    var requestToken: String? = nil
     var sessionID : String? = nil
-    var userID : Int? = nil
     
     override init() {
         super.init()
@@ -39,8 +37,11 @@ class HttpClient: NSObject {
         
         // Build the URL, Configure the request
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, host: host, path: method))
-        request.addValue(ParameterKeys.ApiKey, forHTTPHeaderField: ParameterValues.ApiValue)
-        request.addValue(ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: ParameterValues.ParseApplicationID)
+        // Attact ApiKey and ApplicationID for Parse Host alone
+        if host == UrlComponents.HostOfParseAPI {
+            request.addValue(ParameterValues.ApiValue, forHTTPHeaderField:ParameterKeys.ApiKey)
+            request.addValue(ParameterValues.ParseApplicationID, forHTTPHeaderField: ParameterKeys.ParseApplicationIDKey )
+        }
         
         // Make the request
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -53,15 +54,37 @@ class HttpClient: NSObject {
             
             // Was there an error?
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                
+                let nsError = (error! as NSError)
+                if nsError.code == NSURLErrorNotConnectedToInternet {
+                    sendError(ErrorDescription.NoInternetConnection)
+                }
+                else {
+                    sendError("There was an error with your request: \(error!)")
+                }
                 return
             }
+
             
             // Did we get a successful 2XX response?
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+                
+                print(String(data: data!, encoding: String.Encoding.utf8) ?? "nothing")
+                
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                var errorMessage = ""
+                
+                if statusCode == StatusCode.InvalidCredentials {
+                    errorMessage = ErrorDescription.InvalidCredentials
+                }
+                else {
+                    errorMessage = "Your request returned a status code \(statusCode!)"
+                }
+                
+                sendError(errorMessage)
                 return
             }
+
             
             // Was there any data returned?
             guard let data = data else {
@@ -70,7 +93,8 @@ class HttpClient: NSObject {
             }
             
             // Parse the data
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            let shouldSkipBytes = (host == UrlComponents.HostOfUdacityAPI)
+            self.convertDataWithCompletionHandler(data, shouldSkipBytes, completionHandlerForConvertData: completionHandlerForGET)
         }
         
         task.resume()
@@ -141,7 +165,8 @@ class HttpClient: NSObject {
             }
             
             // Parse the data
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            let shouldSkipBytes = (host == UrlComponents.HostOfUdacityAPI)
+            self.convertDataWithCompletionHandler(data, shouldSkipBytes, completionHandlerForConvertData: completionHandlerForPOST)
         }
         
         task.resume()
@@ -152,9 +177,13 @@ class HttpClient: NSObject {
     // MARK: Helpers
     
     // Given raw JSON, return a usable Foundation object
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data,_ shouldSkipBytes:Bool, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
-        let newData = data.subdata(in: Range(5..<data.count))
+        var newData = data
+        if shouldSkipBytes {
+           newData = newData.subdata(in: Range(5..<newData.count))
+        }
+
         var parsedResult: AnyObject! = nil
         do {
             parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject

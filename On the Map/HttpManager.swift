@@ -30,11 +30,21 @@ extension HttpClient {
             if let error = error {
                 completionHandler(false, error.localizedDescription)
             } else {
+                
+                // Parse result for SessionID
+                let resultsDictionary = results as! [String:Any]
+                let sessionDictionary = resultsDictionary["session"] as! [String:Any]
+                self.sessionID = sessionDictionary["id"] as? String
+                
                 completionHandler(true, nil)
             }
         }
     }
     
+    
+    /// Get Student Locations from Server
+    ///
+    /// - Parameter completionHandler: Handler to be called when task is finished
     func getStudentLocation(completionHandler: @escaping (_ success:Bool, _ studentArray:[StudentInformation]?, _ errorString:String?) -> Void) {
         
         var parameters = [String:Any]()
@@ -48,14 +58,17 @@ extension HttpClient {
             /// It will Create Array<StudentInformation> from Array<Dictionary>
             ///
             /// - Returns: Array containing StudentInformation objects
-            func parseStudentDictionaryArray() -> [StudentInformation]{
+            func parseStudentDictionaryArray(resultToBeParsed:AnyObject?) -> [StudentInformation]{
                 
                 var parsedArray = [StudentInformation]()
-                
-                for studentDictionary in results as! [[String:Any]] {
+                if let resultsDictionary = resultToBeParsed as? [String:Any] {
+                    let resultsArray = resultsDictionary["results"] as! [[String:Any]]
                     
-                    let student = StudentInformation(studentDictionary: studentDictionary)
-                    parsedArray.append(student)
+                    for studentDictionary in resultsArray {
+                        
+                        let student = StudentInformation(studentDictionary: studentDictionary)
+                        parsedArray.append(student)
+                    }
                 }
                 return parsedArray
             }
@@ -64,7 +77,7 @@ extension HttpClient {
             if let error = error {
                 completionHandler(false,nil, error.localizedDescription)
             } else {
-                completionHandler(true,parseStudentDictionaryArray(), nil)
+                completionHandler(true,parseStudentDictionaryArray(resultToBeParsed: results), nil)
             }
         }
     }
