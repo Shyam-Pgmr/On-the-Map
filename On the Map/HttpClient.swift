@@ -35,12 +35,12 @@ class HttpClient: NSObject {
     
     // MARK: GET
     
-    func taskForGETMethod(_ host:String, method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(_ host:String, method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         // Build the URL, Configure the request
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, host: host, path: method))
-        request.addValue(HttpClient.Constants.ParameterKeys.ApiKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ApiValue)
-        request.addValue(HttpClient.Constants.ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ParseApplicationID)
+        request.addValue(ParameterKeys.ApiKey, forHTTPHeaderField: ParameterValues.ApiValue)
+        request.addValue(ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: ParameterValues.ParseApplicationID)
         
         // Make the request
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -80,7 +80,7 @@ class HttpClient: NSObject {
     
     // MARK: POST
     
-    func taskForPOSTMethod(_ host:String, method: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForPOSTMethod(_ host:String, method: String, parameters: [String:Any], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         // Build the URL, Configure the request
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, host: host, path: method))
@@ -90,9 +90,9 @@ class HttpClient: NSObject {
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
         
         // Attact ApiKey and ApplicationID for Parse Host alone
-        if host == Constants.UrlComponents.HostOfParseAPI {
-            request.addValue(Constants.ParameterKeys.ApiKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ApiValue)
-            request.addValue(Constants.ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: HttpClient.Constants.ParameterValues.ParseApplicationID)
+        if host == UrlComponents.HostOfParseAPI {
+            request.addValue(ParameterKeys.ApiKey, forHTTPHeaderField: ParameterValues.ApiValue)
+            request.addValue(ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: ParameterValues.ParseApplicationID)
         }
         
         // Make the request
@@ -109,7 +109,7 @@ class HttpClient: NSObject {
                 
                 let nsError = (error! as NSError)
                 if nsError.code == NSURLErrorNotConnectedToInternet {
-                    sendError(Constants.ErrorDescription.NoInternetConnection)
+                    sendError(ErrorDescription.NoInternetConnection)
                 }
                 else {
                     sendError("There was an error with your request: \(error!)")
@@ -123,8 +123,8 @@ class HttpClient: NSObject {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode
                 var errorMessage = ""
                 
-                if statusCode == Constants.StatusCode.InvalidCredentials {
-                    errorMessage = Constants.ErrorDescription.InvalidCredentials
+                if statusCode == StatusCode.InvalidCredentials {
+                    errorMessage = ErrorDescription.InvalidCredentials
                 }
                 else {
                     errorMessage = "Your request returned a status code \(statusCode!)"
@@ -167,10 +167,10 @@ class HttpClient: NSObject {
     }
     
     // create a URL from parameters
-    private func URLFromParameters(_ parameters: [String:AnyObject], host:String, path: String) -> URL {
+    private func URLFromParameters(_ parameters: [String:Any], host:String, path: String) -> URL {
         
         var components = URLComponents()
-        components.scheme = HttpClient.Constants.UrlComponents.Scheme
+        components.scheme = HttpClient.UrlComponents.Scheme
         components.host = host
         components.path = path
         components.queryItems = [URLQueryItem]()
@@ -187,47 +187,47 @@ class HttpClient: NSObject {
 
 extension HttpClient {
     
-    struct Constants {
-        
-        // MARK: URLComponents
-        struct UrlComponents {
-            static let Scheme = "https"
-            static let HostOfParseAPI = "parse.udacity.com"
-            static let HostOfUdacityAPI = "www.udacity.com"
-
-        }
-        
-        // MARK: URL Methods
-        struct UrlMethod {
-            static let Session = "/api/session"
-            static let StudentLocation = "/parse/classes/StudentLocation"
-        }
-        
-        // MARK: URL
-        struct URL {
-            static let SignupURL = "https://auth.udacity.com/sign-up"
-        }
-        
-        // MARK: Parameter Keys
-        struct ParameterKeys {
-            static let ApiKey = "X-Parse-REST-API-Key"
-            static let ParseApplicationIDKey = "X-Parse-Application-Id"
-        }
-        
-        struct ParameterValues {
-            static let ApiValue = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
-            static let ParseApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
-        }
-     
-        struct StatusCode {
-            static let InvalidCredentials = 403
-        }
-        
-        struct ErrorDescription {
-            static let InvalidCredentials = "Invalid Credentials"
-            static let NoInternetConnection = "Check your Internet Connection"
-        }
+    // MARK: URLComponents
+    struct UrlComponents {
+        static let Scheme = "https"
+        static let HostOfParseAPI = "parse.udacity.com"
+        static let HostOfUdacityAPI = "www.udacity.com"
         
     }
+    
+    // MARK: URL Methods
+    struct UrlMethod {
+        static let Session = "/api/session"
+        static let StudentLocation = "/parse/classes/StudentLocation"
+    }
+    
+    // MARK: URL
+    struct UrlPath {
+        static let SignupURL = "https://auth.udacity.com/sign-up"
+    }
+    
+    // MARK: Parameter Keys
+    struct ParameterKeys {
+        static let ApiKey = "X-Parse-REST-API-Key"
+        static let ParseApplicationIDKey = "X-Parse-Application-Id"
+        static let Limit = "limit"
+        static let Order = "order"
+        static let Skip = "skip"
+    }
+    
+    struct ParameterValues {
+        static let ApiValue = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        static let ParseApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+    }
+    
+    struct StatusCode {
+        static let InvalidCredentials = 403
+    }
+    
+    struct ErrorDescription {
+        static let InvalidCredentials = "Invalid Credentials"
+        static let NoInternetConnection = "Check your Internet Connection"
+    }
+
 }
 

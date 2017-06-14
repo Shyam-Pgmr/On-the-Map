@@ -25,17 +25,13 @@ struct StudentInformation {
     var lastName:String
     var mediaURL:String
     var mapString:String
-    var createdAt:Double
-    var updatedAt:Double
     
-    init(studentDictionary:[String:AnyObject]) {
+    init(studentDictionary:[String:Any]) {
         
         self.firstName = studentDictionary[Keys.FirstName] as? String ?? ""
         self.lastName = studentDictionary[Keys.LastName] as? String ?? ""
         self.mediaURL = studentDictionary[Keys.MediaURL] as? String ?? ""
         self.mapString = studentDictionary[Keys.MapString] as? String ?? ""
-        self.createdAt = studentDictionary[Keys.CreatedAt] as? Double ?? 0
-        self.updatedAt = studentDictionary[Keys.UpdatedAt] as? Double ?? 0
         
         var location = Location()
         location.latitude = studentDictionary[Keys.Latitude] as? Double ?? 0

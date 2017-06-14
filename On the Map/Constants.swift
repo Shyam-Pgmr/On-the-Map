@@ -10,6 +10,9 @@ import Foundation
 
 struct Constants {
     
+    // MARK: Common
+    static let StudentLimit = 100
+    
     // MARK: Alert
     struct Alert {
         
@@ -34,8 +37,11 @@ struct Constants {
         
     }
     
+    // MARK: Segue
     struct Segue {
         static let PresentHome = "PresentHome"
     }
+    
+    
     
 }

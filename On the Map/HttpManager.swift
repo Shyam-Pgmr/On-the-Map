@@ -24,13 +24,47 @@ extension HttpClient {
         
         // Make the request
         
-        let _ = taskForPOSTMethod(Constants.UrlComponents.HostOfUdacityAPI, method: Constants.UrlMethod.Session, parameters: parameters, jsonBody: jsonBody) { (results, error) in
+        let _ = taskForPOSTMethod(UrlComponents.HostOfUdacityAPI, method: UrlMethod.Session, parameters: parameters, jsonBody: jsonBody) { (results, error) in
             
             // Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(false, error.localizedDescription)
             } else {
                 completionHandler(true, nil)
+            }
+        }
+    }
+    
+    func getStudentLocation(completionHandler: @escaping (_ success:Bool, _ studentArray:[StudentInformation]?, _ errorString:String?) -> Void) {
+        
+        var parameters = [String:Any]()
+        parameters[ParameterKeys.Limit] = Constants.StudentLimit
+        parameters[ParameterKeys.Order] = StudentInformation.Keys.UpdatedAt
+        
+        // Make the request
+        
+        let _ = taskForGETMethod(UrlComponents.HostOfParseAPI, method: UrlMethod.StudentLocation, parameters: parameters) { (results, error) in
+            
+            /// It will Create Array<StudentInformation> from Array<Dictionary>
+            ///
+            /// - Returns: Array containing StudentInformation objects
+            func parseStudentDictionaryArray() -> [StudentInformation]{
+                
+                var parsedArray = [StudentInformation]()
+                
+                for studentDictionary in results as! [[String:Any]] {
+                    
+                    let student = StudentInformation(studentDictionary: studentDictionary)
+                    parsedArray.append(student)
+                }
+                return parsedArray
+            }
+            
+            // Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandler(false,nil, error.localizedDescription)
+            } else {
+                completionHandler(true,parseStudentDictionaryArray(), nil)
             }
         }
     }
