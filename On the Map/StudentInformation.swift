@@ -26,6 +26,15 @@ struct StudentInformation {
     var mediaURL:String
     var mapString:String
     
+    init() {
+        
+        self.firstName = ""
+        self.lastName = ""
+        self.mediaURL = ""
+        self.mapString = ""        
+        self.location = Location()
+    }
+    
     init(studentDictionary:[String:Any]) {
         
         self.firstName = studentDictionary[Keys.FirstName] as? String ?? ""

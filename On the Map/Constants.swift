@@ -30,6 +30,7 @@ struct Constants {
             static let LoginSuccess = "Logged in successfully"
             static let InvalidCredentials = "Invalid credential"
             static let InvalidURL = "Invalid URL"
+            static let EmptyAddress = "Address can't be empty"
         }
         
         struct ActionTitle {

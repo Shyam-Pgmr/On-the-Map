@@ -12,6 +12,7 @@ class OMSharedModel: NSObject {
 
     // MARK: Properties
     var studentInformations = [StudentInformation]()
+    var currentStudent = StudentInformation()
     
     override init() {
         super.init()
