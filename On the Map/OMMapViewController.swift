@@ -13,11 +13,20 @@ class OMMapViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var loadingView: UIView!
+    
+    // MARK: Properties
+    var studentLocations:[StudentInformation]?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupRefreshDelegate()
     }
     
     // MARK: Action
@@ -34,13 +43,47 @@ class OMMapViewController: UIViewController {
     
     func setupView() {
         
-        setupRefreshDelegate()
+        loadingView.alpha = 0
     }
     
     func populateMapWithStudentPins() {
         
+        func createAndAddAnnotationIntoMap(using studentInfo:StudentInformation) {
+            
+            let annotation = MKPointAnnotation()
+            annotation.title = studentInfo.firstName + " " + studentInfo.lastName
+            annotation.coordinate = CLLocationCoordinate2D(latitude: studentInfo.location.latitude, longitude:studentInfo.location.longitude)
+            annotation.subtitle = studentInfo.mediaURL
+            
+            mapView.addAnnotation(annotation)
+        }
+        
+        func zoomIntoFirstStudentLocation() {
+            
+            if let firstStudentInfo = studentLocations?.first {
+                let firstStudentCoord = CLLocationCoordinate2D(latitude: firstStudentInfo.location.latitude, longitude: firstStudentInfo.location.longitude)
+                
+                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                let region = MKCoordinateRegion(center: firstStudentCoord, span: span);
+                mapView.setRegion(region, animated: true)
+            }
+        }
+        
+        studentLocations = OMSharedModel.shared().studentInformations
+        
+        // Clear existing annoations in the Map
+        if mapView.annotations.count > 0 {
+            mapView.removeAnnotations(mapView.annotations)
+        }
+        
+        // Add Pins representing Students into Map
+        if let studentLocations = studentLocations {
+            for studentInfo in studentLocations {
+                createAndAddAnnotationIntoMap(using: studentInfo)
+            }
+            zoomIntoFirstStudentLocation()
+        }
     }
-    
 }
 
 extension OMMapViewController: OMTabViewControllerDelegate {
@@ -50,11 +93,11 @@ extension OMMapViewController: OMTabViewControllerDelegate {
     }
     
     func startLoading() {
-        
+        loadingView.alpha = 1
     }
     
     func stopLoading() {
-        
+        loadingView.alpha = 0
     }
     
 }

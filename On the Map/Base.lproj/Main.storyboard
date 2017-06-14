@@ -210,17 +210,41 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kOH-kz-so6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RPc-jg-qp3" id="MXG-n1-qzp"/>
+                                </connections>
                             </mapView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-7e-d5A" userLabel="Loading View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QYi-kl-72K">
+                                        <rect key="frame" x="169" y="259" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59629173801369861" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="QYi-kl-72K" firstAttribute="centerY" secondItem="KsN-7e-d5A" secondAttribute="centerY" id="ibj-n1-V1P"/>
+                                    <constraint firstItem="QYi-kl-72K" firstAttribute="centerX" secondItem="KsN-7e-d5A" secondAttribute="centerX" id="l4v-Ek-J9b"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KsN-7e-d5A" firstAttribute="top" secondItem="eI4-TT-8UE" secondAttribute="bottom" id="4et-lM-MvB"/>
+                            <constraint firstItem="KsN-7e-d5A" firstAttribute="leading" secondItem="ISd-vp-Lav" secondAttribute="leading" id="750-4X-aek"/>
+                            <constraint firstItem="NMk-3c-bok" firstAttribute="top" secondItem="KsN-7e-d5A" secondAttribute="bottom" id="Hs9-gd-FMN"/>
                             <constraint firstAttribute="trailing" secondItem="kOH-kz-so6" secondAttribute="trailing" id="JCa-7i-ATe"/>
+                            <constraint firstAttribute="trailing" secondItem="KsN-7e-d5A" secondAttribute="trailing" id="KRp-Fg-I52"/>
                             <constraint firstItem="kOH-kz-so6" firstAttribute="leading" secondItem="ISd-vp-Lav" secondAttribute="leading" id="dlQ-w7-sHG"/>
                             <constraint firstItem="NMk-3c-bok" firstAttribute="top" secondItem="kOH-kz-so6" secondAttribute="bottom" id="gBs-mo-f02"/>
                             <constraint firstItem="kOH-kz-so6" firstAttribute="top" secondItem="eI4-TT-8UE" secondAttribute="bottom" id="qOb-pg-qY0"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="oSD-YC-2lu"/>
+                    <connections>
+                        <outlet property="loadingView" destination="KsN-7e-d5A" id="V5b-HR-3Cq"/>
+                        <outlet property="mapView" destination="kOH-kz-so6" id="6fU-wG-cHZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnI-Tx-rUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
