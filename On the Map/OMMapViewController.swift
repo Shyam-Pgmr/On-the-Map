@@ -12,13 +12,16 @@ import MapKit
 class OMMapViewController: UIViewController {
 
     // MARK: Outlets
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var loadingView: UIView!
     
     // MARK: Properties
+    
     var studentLocations = [StudentInformation]()
     
     // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -122,16 +125,7 @@ extension OMMapViewController:MKMapViewDelegate {
             
             if let mediaURLString = annotation.subtitle {
                 
-                // Open URL in External Browser
-                if let mediaURL = URL(string: mediaURLString) {
-                    UIApplication.shared.open(mediaURL, options: [:])
-                }
-                else {
-                    // Show Invalid URL Alert
-                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: Constants.Alert.Message.InvalidURL, viewController: self, handler: { (action) in
-                        
-                    })
-                }
+                Utility.openUrlInDefaultBrowser(url: mediaURLString, from: self)
             }
         }
     }

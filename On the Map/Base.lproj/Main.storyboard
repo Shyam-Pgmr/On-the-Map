@@ -181,22 +181,22 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleCell" textLabel="qOZ-ke-lPI" detailTextLabel="wN6-Lw-cwz" style="IBUITableViewCellStyleSubtitle" id="lSf-wM-W2D">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleCell" textLabel="Awu-Kj-J8z" detailTextLabel="6kA-iq-PlY" style="IBUITableViewCellStyleSubtitle" id="W2f-Za-UvQ">
                                         <rect key="frame" x="0.0" y="1" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lSf-wM-W2D" id="BtY-Iv-uah">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W2f-Za-UvQ" id="qfa-cX-0Lc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Titleasdfsadf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qOZ-ke-lPI">
-                                                    <rect key="frame" x="15" y="8" width="99.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Titleasdfsadf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Awu-Kj-J8z">
+                                                    <rect key="frame" x="15" y="8" width="99" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wN6-Lw-cwz">
-                                                    <rect key="frame" x="15" y="28.5" width="44" height="14.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6kA-iq-PlY">
+                                                    <rect key="frame" x="15" y="28" width="44" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -304,7 +304,7 @@
         <!--On the Map-->
         <scene sceneID="VIB-mF-5zo">
             <objects>
-                <tabBarController id="ZeK-nD-RdW" customClass="OMTabViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZeK-nD-RdW" customClass="OMTabViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="lPo-Mu-1E7">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="mTu-Pw-8zw">
                             <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

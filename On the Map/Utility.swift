@@ -43,6 +43,24 @@ class Utility: NSObject {
         }
     }
     
+    
+    /// Opens given URL in External Browser
+    ///
+    /// - Parameters:
+    ///   - url: URL to be opened
+    ///   - viewController: ViewController that will be used to Show Alert in failure cases
+    class func openUrlInDefaultBrowser(url:String, from viewController:UIViewController) {
+                if let mediaURL = URL(string: url) {
+            UIApplication.shared.open(mediaURL, options: [:])
+        }
+        else {
+            // Show Invalid URL Alert
+            Utility.Alert.show(title: Constants.Alert.Title.Oops, message: Constants.Alert.Message.InvalidURL, viewController: viewController, handler: { (action) in
+                
+            })
+        }
+    }
+    
     // MARK: Helpers
     class func shared() -> Utility {
         struct Singelton {

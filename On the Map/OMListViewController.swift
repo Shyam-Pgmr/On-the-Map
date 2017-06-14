@@ -11,14 +11,17 @@ import UIKit
 class OMListViewController: UIViewController {
 
     // MARK: Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingView: UIView!
 
     // MARK: Properties
+    
     var studentLocations = [StudentInformation]()
     let CELL_IDENTIFIER = "SimpleCell"
     
     // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -71,20 +74,29 @@ extension OMListViewController: OMTabViewControllerDelegate {
 
 extension OMListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: Delegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let studentInfo = studentLocations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER)!
         
-        let studentInfo = studentLocations[indexPath.row]
-        
+        // Config cell
         cell.textLabel?.text = studentInfo.firstName + " " + studentInfo.lastName
         cell.detailTextLabel?.text = studentInfo.mediaURL
         
         return cell
     }
     
+    // MARK: Datasource
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let studentInfo = studentLocations[indexPath.row]
+        Utility.openUrlInDefaultBrowser(url: studentInfo.mediaURL, from: self)
+    }
 }

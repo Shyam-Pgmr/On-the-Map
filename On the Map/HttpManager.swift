@@ -49,7 +49,7 @@ extension HttpClient {
         
         var parameters = [String:Any]()
         parameters[ParameterKeys.Limit] = Constants.StudentLimit
-        parameters[ParameterKeys.Order] = StudentInformation.Keys.UpdatedAt
+        parameters[ParameterKeys.Order] = "-" + StudentInformation.Keys.UpdatedAt
         
         // Make the request
         

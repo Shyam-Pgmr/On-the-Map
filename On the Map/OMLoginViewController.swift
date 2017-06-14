@@ -11,11 +11,13 @@ import UIKit
 class OMLoginViewController: UIViewController {
 
     // MARK: Outlets
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
     // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -119,10 +121,7 @@ class OMLoginViewController: UIViewController {
     
     func openSignupScreen() {
         
-        if let signupURL = URL(string: HttpClient.UrlPath.SignupURL) {
-        
-            UIApplication.shared.open(signupURL, options: [:], completionHandler: nil)
-        }
+        Utility.openUrlInDefaultBrowser(url: HttpClient.UrlPath.SignupURL, from: self)        
     }
     
     func openHomeScreen() {
