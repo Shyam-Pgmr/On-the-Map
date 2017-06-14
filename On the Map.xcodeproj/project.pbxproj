@@ -10,7 +10,7 @@
 		52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */; };
 		52064CC01EF00A29004413B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CBF1EF00A29004413B1 /* Constants.swift */; };
 		52064CC21EF01F8E004413B1 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC11EF01F8E004413B1 /* HttpClient.swift */; };
-		52064CC41EF063DB004413B1 /* OMHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC31EF063DB004413B1 /* OMHttpManager.swift */; };
+		52064CC41EF063DB004413B1 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC31EF063DB004413B1 /* HttpManager.swift */; };
 		52064CC61EF06D44004413B1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC51EF06D44004413B1 /* Utility.swift */; };
 		52064CC91EF1476A004413B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52064CC81EF1476A004413B1 /* MapKit.framework */; };
 		52064CCB1EF14B73004413B1 /* OMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCA1EF14B73004413B1 /* OMMapViewController.swift */; };
@@ -26,7 +26,7 @@
 		52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMLoginViewController.swift; sourceTree = "<group>"; };
 		52064CBF1EF00A29004413B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		52064CC11EF01F8E004413B1 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		52064CC31EF063DB004413B1 /* OMHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMHttpManager.swift; sourceTree = "<group>"; };
+		52064CC31EF063DB004413B1 /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		52064CC51EF06D44004413B1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		52064CC81EF1476A004413B1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		52064CCA1EF14B73004413B1 /* OMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMMapViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 			children = (
 				52064CBF1EF00A29004413B1 /* Constants.swift */,
 				52064CC11EF01F8E004413B1 /* HttpClient.swift */,
-				52064CC31EF063DB004413B1 /* OMHttpManager.swift */,
+				52064CC31EF063DB004413B1 /* HttpManager.swift */,
 				52064CC51EF06D44004413B1 /* Utility.swift */,
 			);
 			name = Model;
@@ -209,7 +209,7 @@
 				52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */,
 				52064CC61EF06D44004413B1 /* Utility.swift in Sources */,
 				52064CCD1EF14B7C004413B1 /* OMListViewController.swift in Sources */,
-				52064CC41EF063DB004413B1 /* OMHttpManager.swift in Sources */,
+				52064CC41EF063DB004413B1 /* HttpManager.swift in Sources */,
 				522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */,
 				52064CC01EF00A29004413B1 /* Constants.swift in Sources */,
 			);
