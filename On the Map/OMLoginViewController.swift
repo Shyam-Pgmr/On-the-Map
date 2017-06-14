@@ -39,17 +39,17 @@ class OMLoginViewController: UIViewController {
         view.endEditing(true) // To close keyboard when tapped on screen
     }
     
-    func addBorderToLoginButton() {
+    private func addBorderToLoginButton() {
         
         loginButton.layer.cornerRadius = 4.0
     }
     
-    func setupView() {
+    private func setupView() {
         
         addBorderToLoginButton()
     }
     
-    func validate() -> Bool {
+    private func validate() -> Bool {
         
         var validationMessage = ""
         var textFieldToFocus:UITextField!
@@ -76,12 +76,12 @@ class OMLoginViewController: UIViewController {
         return true
     }
     
-    func startLoading() {
+    private func startLoading() {
         view.isUserInteractionEnabled = false
         loginButton.isHidden = true
     }
     
-    func stopLoading() {
+    private func stopLoading() {
         view.isUserInteractionEnabled = true
         loginButton.isHidden = false
     }
@@ -119,12 +119,12 @@ class OMLoginViewController: UIViewController {
         }
     }
     
-    func openSignupScreen() {
+    private func openSignupScreen() {
         
         Utility.openUrlInDefaultBrowser(url: HttpClient.UrlPath.SignupURL, from: self)        
     }
     
-    func openHomeScreen() {
+    private func openHomeScreen() {
         
         performSegue(withIdentifier: Constants.Segue.PresentHome, sender: self)
     }

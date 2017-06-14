@@ -34,14 +34,14 @@ class OMListViewController: UIViewController {
     
     // MARK: Helpers
     
-    func setupRefreshDelegate() {
+    private func setupRefreshDelegate() {
         
         if let tabBarController = self.tabBarController as? OMTabViewController {
             tabBarController.tabViewControllerDelegate = self
         }
     }
     
-    func setupView() {
+    private func setupView() {
         
         setupRefreshDelegate()
         loadList()

@@ -26,7 +26,7 @@ class OMTabViewController: UITabBarController {
     }
 
     // MARK: API
-    func getStudentInformation() {
+    private func getStudentInformation() {
         
         startLoading()
         let _ = HttpClient.shared().getStudentLocation { (success, studentLocations, errorMessage) in
@@ -58,24 +58,24 @@ class OMTabViewController: UITabBarController {
     
     // MARK: Helpers
     
-    func setupView() {
+    private func setupView() {
     
         getStudentInformation()
     }
     
-    func startLoading() {
+    private func startLoading() {
         if let delegate = tabViewControllerDelegate  {
             delegate.startLoading()
         }
     }
     
-    func stopLoading() {
+    private func stopLoading() {
         if let delegate = tabViewControllerDelegate  {
             delegate.stopLoading()
         }
     }
     
-    func refreshScreens() {
+    private func refreshScreens() {
         if let delegate = tabViewControllerDelegate  {
             delegate.refreshView()
         }
