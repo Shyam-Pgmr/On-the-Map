@@ -19,7 +19,8 @@ struct StudentInformation {
             longitude = 0
         }
     }
-    
+
+    var userID:String
     var location:Location
     var firstName:String
     var lastName:String
@@ -27,7 +28,8 @@ struct StudentInformation {
     var mapString:String
     
     init() {
-        
+
+        self.userID = ""
         self.firstName = ""
         self.lastName = ""
         self.mediaURL = ""
@@ -37,6 +39,7 @@ struct StudentInformation {
     
     init(studentDictionary:[String:Any]) {
         
+        self.userID = studentDictionary[Keys.UniqueKey] as? String ?? ""
         self.firstName = studentDictionary[Keys.FirstName] as? String ?? ""
         self.lastName = studentDictionary[Keys.LastName] as? String ?? ""
         self.mediaURL = studentDictionary[Keys.MediaURL] as? String ?? ""

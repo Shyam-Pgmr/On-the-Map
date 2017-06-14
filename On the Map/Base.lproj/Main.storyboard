@@ -251,9 +251,12 @@
         <scene sceneID="2rI-1N-eWy">
             <objects>
                 <navigationController id="R4B-PF-jgZ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DW8-II-CVs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DW8-II-CVs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Vjc-8F-LFc" kind="relationship" relationship="rootViewController" id="iJl-Wi-lfw"/>
@@ -263,7 +266,7 @@
             </objects>
             <point key="canvasLocation" x="2059" y="-892"/>
         </scene>
-        <!--Posting View Controller-->
+        <!--Post-->
         <scene sceneID="osI-HR-uez">
             <objects>
                 <viewController id="Vjc-8F-LFc" customClass="OMPostingViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
@@ -356,7 +359,7 @@
                             <constraint firstItem="fsW-Cs-9rf" firstAttribute="leading" secondItem="yy1-wN-McH" secondAttribute="leading" id="wOT-vp-eFg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="E5d-yn-LgZ">
+                    <navigationItem key="navigationItem" title="Post" id="E5d-yn-LgZ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ca9-aY-Ral">
                             <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

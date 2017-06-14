@@ -100,28 +100,46 @@ class OMLoginViewController: UIViewController {
         
         HttpClient.shared().login(username: username, password: password) { (success, errorMessage) in
             
-            Utility.runOnMain {
-                if success {
-                    // Clear Fields
-                    self.emailTextField.text = ""
-                    self.passwordTextField.text = ""
-                   
-                    self.openHomeScreen()
+            if success {
+                HttpClient.shared().getUserDetail(completionHandler: { (success, errorMessage) in
+                    
+                    Utility.runOnMain {
+                        if success {
+                            self.clearFields()
+                            self.openHomeScreen()
+                        }
+                        else {
+                            self.showError(message: errorMessage!)
+                        }
+                        self.stopLoading()
+                    }
+                })
+            }
+            else {
+                Utility.runOnMain {
+                    self.showError(message: errorMessage!)
+                    self.stopLoading()
                 }
-                else {
-                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: errorMessage!, viewController: self, handler: { (action) in
-                        // Focus Email Field
-                        self.emailTextField.becomeFirstResponder()
-                    })
-                }
-                self.stopLoading()
             }
         }
     }
     
+    private func clearFields() {
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
+    }
+    
+    private func showError(message:String) {
+        
+        Utility.Alert.show(title: Constants.Alert.Title.Oops, message: message, viewController: self, handler: { (action) in
+            // Focus Email Field
+            self.emailTextField.becomeFirstResponder()
+        })
+    }
+    
     private func openSignupScreen() {
         
-        Utility.openUrlInDefaultBrowser(url: HttpClient.UrlPath.SignupURL, from: self)        
+        Utility.openUrlInDefaultBrowser(url: HttpClient.UrlPath.SignupURL, from: self)
     }
     
     private func openHomeScreen() {

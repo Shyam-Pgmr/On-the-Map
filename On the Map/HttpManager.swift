@@ -31,16 +31,44 @@ extension HttpClient {
                 completionHandler(false, error.localizedDescription)
             } else {
                 
-                // Parse result for SessionID
+                // Parse result for SessionID, UserID
                 let resultsDictionary = results as! [String:Any]
                 let sessionDictionary = resultsDictionary["session"] as! [String:Any]
                 self.sessionID = sessionDictionary["id"] as? String
+                let accountDictionary = resultsDictionary["account"] as! [String:Any]
+                OMSharedModel.shared().currentStudent.userID = (accountDictionary["key"] as? String) ?? ""
                 
                 completionHandler(true, nil)
             }
         }
     }
     
+    /// Get User Detail from Server
+    ///
+    /// - Parameter completionHandler: Handler to be called when task is finished
+    func getUserDetail(completionHandler: @escaping (_ success:Bool, _ errorString:String?) -> Void) {
+        
+        let parameters = [String:Any]()
+        
+        // Make the request
+        let method = UrlMethod.Users + OMSharedModel.shared().currentStudent.userID
+        let _ = taskForGETMethod(UrlComponents.HostOfUdacityAPI, method: method, parameters: parameters) { (results, error) in
+            
+            // Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandler(false, error.localizedDescription)
+            } else {
+                
+                // Parse result
+                let resultsDictionary = results as! [String:Any]
+                let userDictionary = resultsDictionary["user"] as! [String:Any]
+                OMSharedModel.shared().currentStudent.lastName = (userDictionary["last_name"] as? String) ?? ""
+                OMSharedModel.shared().currentStudent.firstName = (userDictionary["first_name"] as? String) ?? ""
+                
+                completionHandler(true, nil)
+            }
+        }
+    }
     
     /// Get Student Locations from Server
     ///

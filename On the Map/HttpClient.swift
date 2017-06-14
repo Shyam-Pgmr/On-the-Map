@@ -221,12 +221,12 @@ extension HttpClient {
         static let Scheme = "https"
         static let HostOfParseAPI = "parse.udacity.com"
         static let HostOfUdacityAPI = "www.udacity.com"
-        
     }
     
     // MARK: URL Methods
     struct UrlMethod {
         static let Session = "/api/session"
+        static let Users = "/api/users/"
         static let StudentLocation = "/parse/classes/StudentLocation"
     }
     
