@@ -31,6 +31,7 @@ struct Constants {
             static let InvalidCredentials = "Invalid credential"
             static let InvalidURL = "Invalid URL"
             static let EmptyAddress = "Address can't be empty"
+            static let EmptyMediaURL = "Please enter some media URL"
         }
         
         struct ActionTitle {

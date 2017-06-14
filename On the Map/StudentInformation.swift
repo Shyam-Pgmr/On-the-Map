@@ -18,6 +18,11 @@ struct StudentInformation {
             latitude = 0
             longitude = 0
         }
+        
+        init(latitude:Double, longitude:Double) {
+            self.latitude = latitude
+            self.longitude = longitude
+        }
     }
 
     var userID:String

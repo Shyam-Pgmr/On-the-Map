@@ -20,7 +20,7 @@ class OMPostingViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: Properties
-    var studentInfo:StudentInformation?
+    var studentInfo = OMSharedModel.shared().currentStudent
     
     // MARK: View Life Cycle
     
@@ -57,6 +57,31 @@ class OMPostingViewController: UIViewController {
     
     private func saveInformation() {
         
+        guard validateForSaving() else {
+            return
+        }
+        
+        
+    }
+    
+    private func validateForSaving() -> Bool {
+        
+        if studentInfo.mapString.isEmpty {
+         
+            Utility.Alert.show(title: Constants.Alert.Title.Validation, message: Constants.Alert.Message.EmptyAddress, viewController: self, handler: { (action) in
+                self.addressTextField.becomeFirstResponder()
+            })
+            return false
+        }
+        
+        if studentInfo.mediaURL.isEmpty {
+            Utility.Alert.show(title: Constants.Alert.Title.Validation, message: Constants.Alert.Message.EmptyMediaURL, viewController: self, handler: { (action) in
+                self.mediaURLTextField.becomeFirstResponder()
+            })
+            return false
+        }
+
+        return true
     }
     
     func validateAddressField() -> Bool {
@@ -107,6 +132,10 @@ class OMPostingViewController: UIViewController {
             let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
             let region = MKCoordinateRegion(center: coord, span: span);
             mapView.setRegion(region, animated: true)
+            
+            // Caching
+            studentInfo.location = StudentInformation.Location(latitude: coord.latitude, longitude: coord.longitude)
+            studentInfo.mapString = addressTextField.text!
         }
     }
 }
@@ -121,6 +150,7 @@ extension OMPostingViewController: UITextFieldDelegate {
             getGeoCodeFromAddress()
         }
         else {
+            studentInfo.mediaURL = mediaURLTextField.text!
             textField.resignFirstResponder()
         }
         
