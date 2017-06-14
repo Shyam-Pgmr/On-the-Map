@@ -8,7 +8,16 @@
 
 import UIKit
 
+protocol OMTabViewControllerDelegate {
+    func refreshView()
+    func startLoading()
+    func stopLoading()
+}
+
 class OMTabViewController: UITabBarController {
+    
+    // MARK: Properties
+    var tabViewControllerDelegate: OMTabViewControllerDelegate?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -54,17 +63,21 @@ class OMTabViewController: UITabBarController {
         getStudentInformation()
     }
     
-    
     func startLoading() {
-        
+        if let delegate = tabViewControllerDelegate  {
+            delegate.startLoading()
+        }
     }
     
     func stopLoading() {
-        
+        if let delegate = tabViewControllerDelegate  {
+            delegate.stopLoading()
+        }
     }
     
     func refreshScreens() {
-        
+        if let delegate = tabViewControllerDelegate  {
+            delegate.refreshView()
+        }
     }
-    
 }
