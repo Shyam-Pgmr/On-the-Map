@@ -48,7 +48,8 @@ class OMTabViewController: UITabBarController {
     
     // MARK: Action
     @IBAction func logoutBarButtonTapAction(_ sender:UIBarButtonItem) {
-        dismiss(animated: true)
+       
+        logout()
     }
     
     @IBAction func refreshBarButtonTapAction(_ sender: UIBarButtonItem) {
@@ -78,6 +79,25 @@ class OMTabViewController: UITabBarController {
     private func refreshScreens() {
         if let delegate = tabViewControllerDelegate  {
             delegate.refreshView()
+        }
+    }
+    
+    private func logout() {
+        
+        startLoading()
+        
+        HttpClient.shared().logout { (success, errorMessage) in
+            
+            Utility.runOnMain {
+                if success {
+                    self.dismiss(animated: true)
+                }
+                else {
+                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: errorMessage!, viewController: self, handler: { (action) in
+                    })
+                }
+                self.stopLoading()
+            }
         }
     }
 }

@@ -172,6 +172,80 @@ class HttpClient: NSObject {
         return task
     }
     
+    // MARK: Delete
+    
+    func taskForDELETEMethod(_ host:String, method: String, parameters: [String:Any], completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        // Build the URL, Configure the request
+        let request = NSMutableURLRequest(url: URLFromParameters(parameters, host: host, path: method))
+        request.httpMethod = "DELETE"
+        
+        if method == UrlMethod.Session {
+            var xsrfCookie: HTTPCookie? = nil
+            let sharedCookieStorage = HTTPCookieStorage.shared
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            }
+            if let xsrfCookie = xsrfCookie {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
+        }
+        
+        // Make the request
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForDELETE(nil, NSError(domain: "taskForDELETEMethod", code: 1, userInfo: userInfo))
+            }
+            
+            // Was there an error?
+            guard (error == nil) else {
+                
+                let nsError = (error! as NSError)
+                if nsError.code == NSURLErrorNotConnectedToInternet {
+                    sendError(ErrorDescription.NoInternetConnection)
+                }
+                else {
+                    sendError("There was an error with your request: \(error!)")
+                }
+                return
+            }
+            
+            // Did we get a successful 2XX response?
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                var errorMessage = ""
+                
+                if statusCode == StatusCode.InvalidCredentials {
+                    errorMessage = ErrorDescription.InvalidCredentials
+                }
+                else {
+                    errorMessage = "Your request returned a status code \(statusCode!)"
+                }
+                
+                sendError(errorMessage)
+                return
+            }
+            
+            // Was there any data returned?
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            // Parse the data
+            let shouldSkipBytes = (host == UrlComponents.HostOfUdacityAPI)
+            self.convertDataWithCompletionHandler(data, shouldSkipBytes, completionHandlerForConvertData: completionHandlerForDELETE)
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
     // MARK: Helpers
     
     // Given raw JSON, return a usable Foundation object

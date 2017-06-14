@@ -41,6 +41,26 @@ extension HttpClient {
         }
     }
     
+    
+    /// Logout User by Delete Session Token from server
+    ///
+    /// - Parameter completionHandler: Handler to be called when task is finished
+    func logout(completionHandler: @escaping (_ success:Bool, _ errorString:String?) -> Void) {
+        
+        let parameters = [String:AnyObject]()
+        
+        // Make the request
+        let _ = taskForDELETEMethod(UrlComponents.HostOfUdacityAPI, method: UrlMethod.Session, parameters: parameters) { (results, error) in
+            
+            if let error = error {
+                completionHandler(false, error.localizedDescription)
+            }
+            else {
+                completionHandler(true, nil)
+            }
+        }
+    }
+    
     /// Get User Detail from Server
     ///
     /// - Parameter completionHandler: Handler to be called when task is finished
