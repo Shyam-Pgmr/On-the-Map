@@ -33,4 +33,9 @@ struct Constants {
         }
         
     }
+    
+    struct Segue {
+        static let PresentHome = "PresentHome"
+    }
+    
 }

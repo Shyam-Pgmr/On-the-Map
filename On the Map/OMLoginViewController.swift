@@ -100,9 +100,7 @@ class OMLoginViewController: UIViewController {
             
             Utility.runOnMain {
                 if success {
-                    Utility.Alert.show(title: Constants.Alert.Title.Success, message: Constants.Alert.Message.LoginSuccess, viewController: self, handler: { (action) in
-                        
-                    })
+                    self.openHomeScreen()
                 }
                 else {
                     Utility.Alert.show(title: Constants.Alert.Title.Oops, message: errorMessage!, viewController: self, handler: { (action) in
@@ -122,6 +120,12 @@ class OMLoginViewController: UIViewController {
             UIApplication.shared.open(signupURL, options: [:], completionHandler: nil)
         }
     }
+    
+    func openHomeScreen() {
+        
+        performSegue(withIdentifier: Constants.Segue.PresentHome, sender: self)
+    }
+    
 }
 
 // MARK: TextField Delegate

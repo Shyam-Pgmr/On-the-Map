@@ -12,6 +12,10 @@
 		52064CC21EF01F8E004413B1 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC11EF01F8E004413B1 /* HttpClient.swift */; };
 		52064CC41EF063DB004413B1 /* OMHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC31EF063DB004413B1 /* OMHttpManager.swift */; };
 		52064CC61EF06D44004413B1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CC51EF06D44004413B1 /* Utility.swift */; };
+		52064CC91EF1476A004413B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52064CC81EF1476A004413B1 /* MapKit.framework */; };
+		52064CCB1EF14B73004413B1 /* OMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCA1EF14B73004413B1 /* OMMapViewController.swift */; };
+		52064CCD1EF14B7C004413B1 /* OMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCC1EF14B7C004413B1 /* OMListViewController.swift */; };
+		52064CCF1EF14C1D004413B1 /* OMTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCE1EF14C1D004413B1 /* OMTabViewController.swift */; };
 		522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C29911EEE8F49008741FA /* AppDelegate.swift */; };
 		522C29971EEE8F49008741FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C29951EEE8F49008741FA /* Main.storyboard */; };
 		522C29991EEE8F49008741FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522C29981EEE8F49008741FA /* Assets.xcassets */; };
@@ -24,6 +28,10 @@
 		52064CC11EF01F8E004413B1 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		52064CC31EF063DB004413B1 /* OMHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMHttpManager.swift; sourceTree = "<group>"; };
 		52064CC51EF06D44004413B1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		52064CC81EF1476A004413B1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		52064CCA1EF14B73004413B1 /* OMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMMapViewController.swift; sourceTree = "<group>"; };
+		52064CCC1EF14B7C004413B1 /* OMListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMListViewController.swift; sourceTree = "<group>"; };
+		52064CCE1EF14C1D004413B1 /* OMTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTabViewController.swift; sourceTree = "<group>"; };
 		522C298E1EEE8F49008741FA /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		522C29911EEE8F49008741FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522C29961EEE8F49008741FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52064CC91EF1476A004413B1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */,
+				52064CCA1EF14B73004413B1 /* OMMapViewController.swift */,
+				52064CCC1EF14B7C004413B1 /* OMListViewController.swift */,
+				52064CCE1EF14C1D004413B1 /* OMTabViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -79,11 +91,20 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		52064CC71EF1476A004413B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52064CC81EF1476A004413B1 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		522C29851EEE8F49008741FA = {
 			isa = PBXGroup;
 			children = (
 				522C29901EEE8F49008741FA /* On the Map */,
 				522C298F1EEE8F49008741FA /* Products */,
+				52064CC71EF1476A004413B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +162,7 @@
 				TargetAttributes = {
 					522C298D1EEE8F49008741FA = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = LTQJ3ZB4X8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -181,9 +203,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52064CCB1EF14B73004413B1 /* OMMapViewController.swift in Sources */,
 				52064CC21EF01F8E004413B1 /* HttpClient.swift in Sources */,
+				52064CCF1EF14C1D004413B1 /* OMTabViewController.swift in Sources */,
 				52064CBE1EEFFFF9004413B1 /* OMLoginViewController.swift in Sources */,
 				52064CC61EF06D44004413B1 /* Utility.swift in Sources */,
+				52064CCD1EF14B7C004413B1 /* OMListViewController.swift in Sources */,
 				52064CC41EF063DB004413B1 /* OMHttpManager.swift in Sources */,
 				522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */,
 				52064CC01EF00A29004413B1 /* Constants.swift in Sources */,
@@ -311,10 +336,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LTQJ3ZB4X8;
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shyam.On-the-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -323,10 +351,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LTQJ3ZB4X8;
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shyam.On-the-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
