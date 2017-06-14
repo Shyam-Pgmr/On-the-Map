@@ -100,6 +100,10 @@ class OMLoginViewController: UIViewController {
             
             Utility.runOnMain {
                 if success {
+                    // Clear Fields
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                   
                     self.openHomeScreen()
                 }
                 else {

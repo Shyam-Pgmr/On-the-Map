@@ -149,7 +149,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="slg-Kp-eln" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iIN-9B-oGI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iIN-9B-oGI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -233,13 +233,22 @@
                     <navigationItem key="navigationItem" title="On the Map" id="lPo-Mu-1E7">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="mTu-Pw-8zw">
                             <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logoutBarButtonTapAction:" destination="ZeK-nD-RdW" id="nHW-Zp-nrJ"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="j57-8C-Out">
                                 <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="addBarButtonTapAction:" destination="ZeK-nD-RdW" id="6dc-sh-IDf"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="u5w-dp-qsq">
                                 <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="refreshBarButtonTapAction:" destination="ZeK-nD-RdW" id="3kS-bZ-Xgw"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>

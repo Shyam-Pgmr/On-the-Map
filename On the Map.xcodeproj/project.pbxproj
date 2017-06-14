@@ -16,8 +16,8 @@
 		52064CCB1EF14B73004413B1 /* OMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCA1EF14B73004413B1 /* OMMapViewController.swift */; };
 		52064CCD1EF14B7C004413B1 /* OMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCC1EF14B7C004413B1 /* OMListViewController.swift */; };
 		52064CCF1EF14C1D004413B1 /* OMTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52064CCE1EF14C1D004413B1 /* OMTabViewController.swift */; };
+		52064CD01EF14E5F004413B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C29951EEE8F49008741FA /* Main.storyboard */; };
 		522C29921EEE8F49008741FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522C29911EEE8F49008741FA /* AppDelegate.swift */; };
-		522C29971EEE8F49008741FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C29951EEE8F49008741FA /* Main.storyboard */; };
 		522C29991EEE8F49008741FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522C29981EEE8F49008741FA /* Assets.xcassets */; };
 		522C299C1EEE8F49008741FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522C299A1EEE8F49008741FA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -66,9 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				52064CBD1EEFFFF9004413B1 /* OMLoginViewController.swift */,
+				52064CCE1EF14C1D004413B1 /* OMTabViewController.swift */,
 				52064CCA1EF14B73004413B1 /* OMMapViewController.swift */,
 				52064CCC1EF14B7C004413B1 /* OMListViewController.swift */,
-				52064CCE1EF14C1D004413B1 /* OMTabViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -190,9 +190,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52064CD01EF14E5F004413B1 /* Main.storyboard in Resources */,
 				522C299C1EEE8F49008741FA /* LaunchScreen.storyboard in Resources */,
 				522C29991EEE8F49008741FA /* Assets.xcassets in Resources */,
-				522C29971EEE8F49008741FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
