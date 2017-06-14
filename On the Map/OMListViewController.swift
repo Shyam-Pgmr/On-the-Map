@@ -12,6 +12,11 @@ class OMListViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+
+    // MARK: Properties
+    var studentLocations = [StudentInformation]()
+    let CELL_IDENTIFIER = "SimpleCell"
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -19,8 +24,10 @@ class OMListViewController: UIViewController {
         setupView()
     }
     
-    // MARK: Action
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupRefreshDelegate()
+    }
     
     // MARK: Helpers
     
@@ -34,25 +41,50 @@ class OMListViewController: UIViewController {
     func setupView() {
         
         setupRefreshDelegate()
+        loadList()
     }
     
-    func populateMapWithStudentPins() {
-        
+    func loadList() {
+        studentLocations = OMSharedModel.shared().studentInformations
+        tableView.reloadData()
     }
 }
+
+// MARK: OMTabViewController Delegate
 
 extension OMListViewController: OMTabViewControllerDelegate {
     
     func refreshView() {
-        populateMapWithStudentPins()
+        loadList()
     }
     
     func startLoading() {
-        
+        loadingView.alpha = 1
     }
     
     func stopLoading() {
+        loadingView.alpha = 0
+    }
+}
+
+// MARK: TableView Delegate and Datasource
+
+extension OMListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return studentLocations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER)!
+        
+        let studentInfo = studentLocations[indexPath.row]
+        
+        cell.textLabel?.text = studentInfo.firstName + " " + studentInfo.lastName
+        cell.detailTextLabel?.text = studentInfo.mediaURL
+        
+        return cell
     }
     
 }
