@@ -25,17 +25,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tao-jF-6Pd">
-                                <rect key="frame" x="156.5" y="70" width="62" height="62"/>
+                                <rect key="frame" x="156.5" y="60" width="62" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tao-jF-6Pd" secondAttribute="height" multiplier="1:1" id="DuG-1o-jVl"/>
                                     <constraint firstAttribute="width" constant="62" id="Os2-Un-YFX"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QvK-av-2Bv">
-                                <rect key="frame" x="16" y="162" width="343" height="190"/>
+                                <rect key="frame" x="16" y="138" width="343" height="240"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="shyam.pgmr@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-e8-Ucu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ER8-pC-Vfj">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <color key="textColor" red="0.15686274510000001" green="0.70196078429999997" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-e8-Ucu">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="hiX-Hy-ugs"/>
                                         </constraints>
@@ -46,8 +52,8 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="09S-db-eJx"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="murug35@n" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="akP-Qj-CkB">
-                                        <rect key="frame" x="0.0" y="50" width="343" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="akP-Qj-CkB">
+                                        <rect key="frame" x="0.0" y="100" width="343" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
@@ -56,7 +62,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWR-vx-jxY">
-                                        <rect key="frame" x="0.0" y="100" width="343" height="40"/>
+                                        <rect key="frame" x="0.0" y="150" width="343" height="40"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QGN-M2-RwA">
                                                 <rect key="frame" x="161" y="10" width="20" height="20"/>
@@ -83,7 +89,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePT-ab-Xb0" userLabel="Sign up">
-                                        <rect key="frame" x="0.0" y="150" width="343" height="40"/>
+                                        <rect key="frame" x="0.0" y="200" width="343" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-yr-2tG" userLabel="Container">
                                                 <rect key="frame" x="53.5" y="10" width="236" height="20.5"/>
@@ -128,9 +134,9 @@
                         <constraints>
                             <constraint firstItem="Tao-jF-6Pd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hcl-zO-5oO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QvK-av-2Bv" secondAttribute="trailing" id="i4a-fq-6vg"/>
-                            <constraint firstItem="Tao-jF-6Pd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="nMm-9Z-2Vt"/>
+                            <constraint firstItem="Tao-jF-6Pd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="nMm-9Z-2Vt"/>
                             <constraint firstItem="QvK-av-2Bv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="s8d-cy-HPF"/>
-                            <constraint firstItem="QvK-av-2Bv" firstAttribute="top" secondItem="Tao-jF-6Pd" secondAttribute="bottom" constant="30" id="yz7-xD-buN"/>
+                            <constraint firstItem="QvK-av-2Bv" firstAttribute="top" secondItem="Tao-jF-6Pd" secondAttribute="bottom" constant="16" id="yz7-xD-buN"/>
                         </constraints>
                     </view>
                     <connections>
@@ -366,7 +372,7 @@
                                 <action selector="cancelBarButtonTapAction:" destination="Vjc-8F-LFc" id="ZtH-vI-QWq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XtW-Mg-5k2">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="XtW-Mg-5k2">
                             <color key="tintColor" red="0.15589895840000001" green="0.70086473230000002" blue="0.89609259370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="saveBarButtonTapAction:" destination="Vjc-8F-LFc" id="PFi-nA-pof"/>
