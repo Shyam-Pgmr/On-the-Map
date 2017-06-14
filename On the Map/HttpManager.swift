@@ -23,13 +23,12 @@ extension HttpClient {
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         
         // Make the request
-        
         let _ = taskForPOSTMethod(UrlComponents.HostOfUdacityAPI, method: UrlMethod.Session, parameters: parameters, jsonBody: jsonBody) { (results, error) in
             
-            // Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(false, error.localizedDescription)
-            } else {
+            }
+            else {
                 
                 // Parse result for SessionID, UserID
                 let resultsDictionary = results as! [String:Any]
@@ -54,10 +53,10 @@ extension HttpClient {
         let method = UrlMethod.Users + OMSharedModel.shared().currentStudent.userID
         let _ = taskForGETMethod(UrlComponents.HostOfUdacityAPI, method: method, parameters: parameters) { (results, error) in
             
-            // Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(false, error.localizedDescription)
-            } else {
+            }
+            else {
                 
                 // Parse result
                 let resultsDictionary = results as! [String:Any]
@@ -80,7 +79,6 @@ extension HttpClient {
         parameters[ParameterKeys.Order] = "-" + StudentInformation.Keys.UpdatedAt
         
         // Make the request
-        
         let _ = taskForGETMethod(UrlComponents.HostOfParseAPI, method: UrlMethod.StudentLocation, parameters: parameters) { (results, error) in
             
             /// It will Create Array<StudentInformation> from Array<Dictionary>
@@ -101,11 +99,34 @@ extension HttpClient {
                 return parsedArray
             }
             
-            // Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(false,nil, error.localizedDescription)
-            } else {
+            }
+            else {
                 completionHandler(true,parseStudentDictionaryArray(resultToBeParsed: results), nil)
+            }
+        }
+    }
+    
+    
+    /// Post Student Detail to Server
+    ///
+    /// - Parameters:
+    ///   - studentInfo: Student Detail that should be posted
+    ///   - completionHandler: Handler to be called when task is finished
+    func postStudentInfo(studentInfo:StudentInformation, completionHandler: @escaping (_ success:Bool, _ errorString:String?) -> Void) {
+        
+        let parameters = [String:AnyObject]()
+        let jsonBody = "{\"uniqueKey\": \"\(studentInfo.userID)\", \"firstName\": \"\(studentInfo.firstName)\", \"lastName\": \"\(studentInfo.lastName)\",\"mapString\": \"\(studentInfo.mapString)\", \"mediaURL\": \"\(studentInfo.mediaURL)\",\"latitude\": \(studentInfo.location.latitude), \"longitude\": \(studentInfo.location.longitude)}"
+        
+        // Make the request
+        let _ = taskForPOSTMethod(UrlComponents.HostOfUdacityAPI, method: UrlMethod.Session, parameters: parameters, jsonBody: jsonBody) { (results, error) in
+            
+            if let error = error {
+                completionHandler(false, error.localizedDescription)
+            }
+            else {
+                completionHandler(true, nil)
             }
         }
     }
