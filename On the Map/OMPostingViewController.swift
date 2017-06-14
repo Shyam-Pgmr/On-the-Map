@@ -26,14 +26,13 @@ class OMPostingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
     }
 
     // MARK: Action
 
     @IBAction func saveBarButtonTapAction(_ sender: UIBarButtonItem) {
         
-        
+        saveInformation()
     }
     
     @IBAction func cancelBarButtonTapAction(_ sender: UIBarButtonItem) {
@@ -43,8 +42,8 @@ class OMPostingViewController: UIViewController {
     
     // MARK: Helpers
     
-    private func setupView() {
-        
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) // To close keyboard when tapped on screen
     }
     
     private func startLoading() {
@@ -61,6 +60,29 @@ class OMPostingViewController: UIViewController {
             return
         }
         
+        view.endEditing(true) // Close Keyboard
+        startLoading()
+        
+        HttpClient.shared().postStudentInfo(studentInfo: studentInfo) { (success, errorMessage) in
+
+            Utility.runOnMain {
+                if success {
+                    
+                    // Update CurrentStudent Object in SharedModel
+                    OMSharedModel.shared().currentStudent = self.studentInfo
+                    
+                    Utility.Alert.show(title: Constants.Alert.Title.Success, message: Constants.Alert.Message.PostedSuccessfully, viewController: self, handler: { (action) in
+                        // Close the Screen
+                        self.dismiss(animated: true)
+                    })
+                }
+                else {
+                    Utility.Alert.show(title: Constants.Alert.Title.Oops, message: errorMessage!, viewController: self, handler: { (action) in
+                    })
+                }
+                self.stopLoading()
+            }
+        }
         
     }
     
@@ -146,6 +168,18 @@ extension OMPostingViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        takeActionOn(textField: textField)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        takeActionOn(textField: textField)
+    }
+    
+    // MARK: Helpers
+    
+    func takeActionOn(textField:UITextField) {
         if textField == addressTextField {
             getGeoCodeFromAddress()
         }
@@ -153,7 +187,5 @@ extension OMPostingViewController: UITextFieldDelegate {
             studentInfo.mediaURL = mediaURLTextField.text!
             textField.resignFirstResponder()
         }
-        
-        return true
     }
 }

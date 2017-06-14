@@ -32,6 +32,7 @@ struct Constants {
             static let InvalidURL = "Invalid URL"
             static let EmptyAddress = "Address can't be empty"
             static let EmptyMediaURL = "Please enter some media URL"
+            static let PostedSuccessfully = "Your location has been posted successfully"
         }
         
         struct ActionTitle {

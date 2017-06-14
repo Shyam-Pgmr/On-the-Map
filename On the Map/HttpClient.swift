@@ -40,7 +40,7 @@ class HttpClient: NSObject {
         // Attact ApiKey and ApplicationID for Parse Host alone
         if host == UrlComponents.HostOfParseAPI {
             request.addValue(ParameterValues.ApiValue, forHTTPHeaderField:ParameterKeys.ApiKey)
-            request.addValue(ParameterValues.ParseApplicationID, forHTTPHeaderField: ParameterKeys.ParseApplicationIDKey )
+            request.addValue(ParameterValues.ParseApplicationID, forHTTPHeaderField: ParameterKeys.ParseApplicationIDKey)
         }
         
         // Make the request
@@ -65,7 +65,6 @@ class HttpClient: NSObject {
                 return
             }
 
-            
             // Did we get a successful 2XX response?
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 
@@ -85,7 +84,6 @@ class HttpClient: NSObject {
                 return
             }
 
-            
             // Was there any data returned?
             guard let data = data else {
                 sendError("No data was returned by the request!")
@@ -115,8 +113,8 @@ class HttpClient: NSObject {
         
         // Attact ApiKey and ApplicationID for Parse Host alone
         if host == UrlComponents.HostOfParseAPI {
-            request.addValue(ParameterKeys.ApiKey, forHTTPHeaderField: ParameterValues.ApiValue)
-            request.addValue(ParameterKeys.ParseApplicationIDKey, forHTTPHeaderField: ParameterValues.ParseApplicationID)
+            request.addValue(ParameterValues.ApiValue, forHTTPHeaderField:ParameterKeys.ApiKey)
+            request.addValue(ParameterValues.ParseApplicationID, forHTTPHeaderField: ParameterKeys.ParseApplicationIDKey)
         }
         
         // Make the request

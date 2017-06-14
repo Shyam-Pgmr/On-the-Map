@@ -10,7 +10,6 @@ import UIKit
 
 extension HttpClient {
     
-    
     /// Login API
     ///
     /// - Parameters:
@@ -108,7 +107,6 @@ extension HttpClient {
         }
     }
     
-    
     /// Post Student Detail to Server
     ///
     /// - Parameters:
@@ -120,7 +118,7 @@ extension HttpClient {
         let jsonBody = "{\"uniqueKey\": \"\(studentInfo.userID)\", \"firstName\": \"\(studentInfo.firstName)\", \"lastName\": \"\(studentInfo.lastName)\",\"mapString\": \"\(studentInfo.mapString)\", \"mediaURL\": \"\(studentInfo.mediaURL)\",\"latitude\": \(studentInfo.location.latitude), \"longitude\": \(studentInfo.location.longitude)}"
         
         // Make the request
-        let _ = taskForPOSTMethod(UrlComponents.HostOfUdacityAPI, method: UrlMethod.Session, parameters: parameters, jsonBody: jsonBody) { (results, error) in
+        let _ = taskForPOSTMethod(UrlComponents.HostOfParseAPI, method: UrlMethod.StudentLocation, parameters: parameters, jsonBody: jsonBody) { (results, error) in
             
             if let error = error {
                 completionHandler(false, error.localizedDescription)
