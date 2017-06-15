@@ -15,11 +15,7 @@ class OMMapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var loadingView: UIView!
-    
-    // MARK: Properties
-    
-    var studentLocations = [StudentInformation]()
-    
+        
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -60,7 +56,7 @@ class OMMapViewController: UIViewController {
         
         func zoomIntoFirstStudentLocation() {
             
-            if let firstStudentInfo = studentLocations.first {
+            if let firstStudentInfo = OMSharedModel.shared().studentInformations.first {
                 let firstStudentCoord = CLLocationCoordinate2D(latitude: firstStudentInfo.location.latitude, longitude: firstStudentInfo.location.longitude)
                 
                 let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
@@ -69,15 +65,13 @@ class OMMapViewController: UIViewController {
             }
         }
         
-        studentLocations = OMSharedModel.shared().studentInformations
-        
         // Clear existing annoations in the Map
         if mapView.annotations.count > 0 {
             mapView.removeAnnotations(mapView.annotations)
         }
         
         // Add Pins representing Students into Map
-        for studentInfo in studentLocations {
+        for studentInfo in OMSharedModel.shared().studentInformations {
             createAndAddAnnotationIntoMap(using: studentInfo)
         }
         zoomIntoFirstStudentLocation()
